@@ -21,6 +21,7 @@
               type="number"
               placeholder="Year"
               min="1900"
+              max="2023"
               required
             />
             <input id="car-make" type="text" placeholder="Make" required />
@@ -37,7 +38,13 @@
         </div>
         <div class="input-field" id="credit-card-field">
           <label for="credit-card">Credit Card</label>
-          <input id="credit-card" type="text" required />
+          <input
+            id="credit-card"
+            type="text"
+            pattern="^[0-9]{16}$"
+            title="16-digit number"
+            required
+          />
         </div>
         <div class="row">
           <div class="col">
@@ -48,6 +55,7 @@
                 type="text"
                 pattern="^[0-9]{3}$"
                 title="3-digit number"
+                placeholder="3-digit number"
                 required
               />
             </div>
@@ -65,5 +73,6 @@
       </form>
     </div>
     <script src="script.js"></script>
+    <script src="moment.js"></script>
   </body>
 </html>
