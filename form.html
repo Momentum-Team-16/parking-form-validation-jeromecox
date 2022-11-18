@@ -41,7 +41,6 @@
           <input
             id="credit-card"
             type="text"
-            pattern="^[0-9]{16}$"
             title="16-digit number"
             required
           />
@@ -63,7 +62,13 @@
           <div class="col">
             <div class="input-field" id="expiration-field">
               <label for="expiration">Expiration</label>
-              <input id="expiration" type="text" placeholder="MM/YY" required />
+              <input
+                id="expiration"
+                type="date"
+                pattern="["
+                placeholder="MM/YY"
+                required
+              />
             </div>
           </div>
         </div>
@@ -72,7 +77,7 @@
         </div>
       </form>
     </div>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <script src="moment.js"></script>
   </body>
 </html>
