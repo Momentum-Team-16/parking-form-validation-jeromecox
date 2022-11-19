@@ -38,8 +38,10 @@ parkForm.addEventListener("submit", function (event) {
   console.log(`index of last day + 1: ${lastDay}`);
 
   let totalText = 0;
-  for (i = dayOfWeek; i < lastDay; i++) {
-    totalText += dayPrice[dayOfWeek];
+  while (dayOfWeek < lastDay) {
+    let i = dayOfWeek % 7;
+    totalText += dayPrice[i];
+    dayOfWeek++;
   }
   console.log(`totalText: ${totalText}`);
 
@@ -49,28 +51,34 @@ parkForm.addEventListener("submit", function (event) {
 
   parkForm.appendChild(total);
 
+  let creditCard = document.querySelector("#credit-card-field");
   let cardNum = document.querySelector("#credit-card").value;
   console.log(cardNum);
 
-  // function validateCardNumber(number) {
-  //   var regex = new RegExp("^[0-9]{16}$");
-  //   if (!regex.test(cardNum)) return false;
+  function validateCardNumber(number) {
+    var regex = new RegExp("^[0-9]{16}$");
+    if (!regex.test(number)) return false;
 
-  //   return luhnCheck(cardNum);
-  // }
+    return luhnCheck(number);
+  }
 
-  // function luhnCheck(val) {
-  //   var sum = 0;
-  //   for (var i = 0; i < val.length; i++) {
-  //     var intVal = parseInt(val.substr(i, 1));
-  //     if (i % 2 == 0) {
-  //       intVal *= 2;
-  //       if (intVal > 9) {
-  //         intVal = 1 + (intVal % 10);
-  //       }
-  //     }
-  //     sum += intVal;
-  //   }
-  //   return sum % 10 == 0;
-  // }
+  function luhnCheck(val) {
+    var sum = 0;
+    for (var i = 0; i < val.length; i++) {
+      var intVal = parseInt(val.substr(i, 1));
+      if (i % 2 == 0) {
+        intVal *= 2;
+        if (intVal > 9) {
+          intVal = 1 + (intVal % 10);
+        }
+      }
+      sum += intVal;
+    }
+    return sum % 10 == 0;
+  }
+
+  if (validateCardNumber(cardNum) === false) {
+    creditCard.classList.add(".input-invalid");
+    alert("Not a valid card number");
+  }
 });
