@@ -1,5 +1,3 @@
-console.log("Add validation!");
-
 const parkForm = document.querySelector("#container");
 
 // Solves problem 4 with constant price per day
@@ -21,15 +19,24 @@ let dayPrice = [7, 5, 5, 5, 5, 5, 7];
 parkForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  let dateDiv = document.querySelector("#start-date");
-  let startDate = dateDiv.value;
-  console.log(startDate);
+  let startDate = document.querySelector("#start-date").value;
+  console.log(`Start date: ${startDate}`);
+
   let newDate = new Date(startDate);
   console.log(`new date: ${newDate}`);
+
+  let today = new Date();
+  console.log(`today's date: ${today}`);
+
+  let dateError = document.querySelector("#date-error");
+  if (newDate < today) {
+    dateError.innerText = "Date cannot be in the past";
+  }
+
   let dayOfWeek = newDate.getDay();
   console.log(`index of day: ${dayOfWeek}`);
 
-  console.log(dayPrice[dayOfWeek]);
+  console.log(`Start date cost: $${dayPrice[dayOfWeek]}`);
 
   let numDays = +document.querySelector("#days").value;
   console.log(`number of days: ${numDays}`);
@@ -76,9 +83,10 @@ parkForm.addEventListener("submit", function (event) {
     }
     return sum % 10 == 0;
   }
+  let errorMessage = document.querySelector("#error");
 
   if (validateCardNumber(cardNum) === false) {
     creditCard.classList.add(".input-invalid");
-    alert("Not a valid card number");
+    errorMessage.innerText = "Not a valid card number";
   }
 });

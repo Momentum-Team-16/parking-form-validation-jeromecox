@@ -40,19 +40,22 @@
 }
 
 .input-invalid > label {
-    color: #DC2626;
+  color: #dc2626;
 }
 
 .input-invalid > input {
-  border-color:  #DC2626;
+  border-color: #dc2626;
 }
 
 .input-valid > label {
-  color: #22C55E
+  color: #22c55e;
 }
 
 .input-valid > input {
-  border-color: #22C55E;
+  border-color: #22c55e;
 }
 
-
+.error {
+  font-size: larger;
+  color: #dc2626;
+}
