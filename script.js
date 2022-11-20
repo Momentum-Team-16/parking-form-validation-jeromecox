@@ -41,6 +41,24 @@ parkForm.addEventListener("submit", function (event) {
   let numDays = +document.querySelector("#days").value;
   console.log(`number of days: ${numDays}`);
 
+  let expDate = document.querySelector("#expiration").value;
+  console.log(`Exp Date: ${expDate}`);
+  let expYearMonth = +(expDate.slice(3) + expDate.slice(0, 2));
+  console.log(`Exp YearMonth ${expYearMonth}`);
+
+  let year = String(today.getFullYear());
+  testYear = typeof year;
+  console.log(`year is type ${testYear}`);
+  let todayYear = year.slice(2);
+  let todayMonth = today.getMonth() + 1;
+  let todayYearMonth = +(todayYear + todayMonth);
+  console.log(todayYearMonth);
+
+  let expDateError = document.querySelector("#exp-error");
+  if (expYearMonth < todayYearMonth) {
+    expDateError.innerText = "Expiration date cannot be in the past";
+  }
+
   let lastDay = dayOfWeek + numDays;
   console.log(`index of last day + 1: ${lastDay}`);
 
