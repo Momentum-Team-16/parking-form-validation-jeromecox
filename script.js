@@ -19,6 +19,7 @@ let dayPrice = [7, 5, 5, 5, 5, 5, 7];
 parkForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
+  let startDateField = document.querySelector("#start-date-field");
   let startDate = document.querySelector("#start-date").value;
   console.log(`Start date: ${startDate}`);
 
@@ -30,6 +31,7 @@ parkForm.addEventListener("submit", function (event) {
 
   let dateError = document.querySelector("#date-error");
   if (newDate < today) {
+    startDateField.classList.add("input-invalid");
     dateError.innerText = "Date cannot be in the past";
   }
 
@@ -41,6 +43,7 @@ parkForm.addEventListener("submit", function (event) {
   let numDays = +document.querySelector("#days").value;
   console.log(`number of days: ${numDays}`);
 
+  let expDateField = document.querySelector("#expiration-field");
   let expDate = document.querySelector("#expiration").value;
   console.log(`Exp Date: ${expDate}`);
   let expYearMonth = +(expDate.slice(3) + expDate.slice(0, 2));
@@ -56,6 +59,7 @@ parkForm.addEventListener("submit", function (event) {
 
   let expDateError = document.querySelector("#exp-error");
   if (expYearMonth < todayYearMonth) {
+    expDateField.classList.add("input-invalid");
     expDateError.innerText = "Expiration date cannot be in the past";
   }
 
@@ -104,7 +108,7 @@ parkForm.addEventListener("submit", function (event) {
   let errorMessage = document.querySelector("#error");
 
   if (validateCardNumber(cardNum) === false) {
-    creditCard.classList.add(".input-invalid");
+    creditCard.classList.add("input-invalid");
     errorMessage.innerText = "Not a valid card number";
   }
 });
