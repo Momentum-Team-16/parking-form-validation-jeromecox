@@ -20,6 +20,7 @@ parkForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
   let startDateField = document.querySelector("#start-date-field");
+  let startDateError = document.querySelector("#start-date");
   let startDate = document.querySelector("#start-date").value;
   console.log(`Start date: ${startDate}`);
 
@@ -29,10 +30,10 @@ parkForm.addEventListener("submit", function (event) {
   let today = new Date();
   console.log(`today's date: ${today}`);
 
-  let dateError = document.querySelector("#date-error");
   if (newDate < today) {
     startDateField.classList.add("input-invalid");
-    dateError.innerText = "Date cannot be in the past";
+    startDateError.setCustomValidity("Date cannot be in the past");
+    startDateError.reportValidity();
   }
 
   let dayOfWeek = newDate.getDay();
@@ -44,6 +45,7 @@ parkForm.addEventListener("submit", function (event) {
   console.log(`number of days: ${numDays}`);
 
   let expDateField = document.querySelector("#expiration-field");
+  let expDateError = document.querySelector("#expiration");
   let expDate = document.querySelector("#expiration").value;
   console.log(`Exp Date: ${expDate}`);
   let expYearMonth = +(expDate.slice(3) + expDate.slice(0, 2));
@@ -57,10 +59,10 @@ parkForm.addEventListener("submit", function (event) {
   let todayYearMonth = +(todayYear + todayMonth);
   console.log(todayYearMonth);
 
-  let expDateError = document.querySelector("#exp-error");
   if (expYearMonth < todayYearMonth) {
     expDateField.classList.add("input-invalid");
-    expDateError.innerText = "Expiration date cannot be in the past";
+    expDateError.setCustomValidity("Expiration date cannot be in the past");
+    expDateError.reportValidity();
   }
 
   let lastDay = dayOfWeek + numDays;
@@ -81,6 +83,7 @@ parkForm.addEventListener("submit", function (event) {
   parkForm.appendChild(total);
 
   let creditCard = document.querySelector("#credit-card-field");
+  let cardTest = document.querySelector("#credit-card");
   let cardNum = document.querySelector("#credit-card").value;
   console.log(cardNum);
 
@@ -109,6 +112,7 @@ parkForm.addEventListener("submit", function (event) {
 
   if (validateCardNumber(cardNum) === false) {
     creditCard.classList.add("input-invalid");
-    errorMessage.innerText = "Not a valid card number";
+    cardTest.setCustomValidity("Please enter a valid credit card number");
+    cardTest.reportValidity();
   }
 });
