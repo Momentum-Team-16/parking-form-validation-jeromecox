@@ -108,7 +108,6 @@ parkForm.addEventListener("submit", function (event) {
     }
     return sum % 10 == 0;
   }
-  let errorMessage = document.querySelector("#error");
 
   if (validateCardNumber(cardNum) === false) {
     creditCard.classList.add("input-invalid");
