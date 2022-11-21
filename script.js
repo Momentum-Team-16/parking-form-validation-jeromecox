@@ -14,6 +14,7 @@ const parkForm = document.querySelector("#container");
 // });
 
 // Solves problem 5 with changing price for weekend
+// dayPrice array = price for each day of the week, starting with Sunday
 let dayPrice = [7, 5, 5, 5, 5, 5, 7];
 
 parkForm.addEventListener("submit", function (event) {
@@ -49,15 +50,15 @@ parkForm.addEventListener("submit", function (event) {
   let expDate = document.querySelector("#expiration").value;
   console.log(`Exp Date: ${expDate}`);
   let expYearMonth = +(expDate.slice(3) + expDate.slice(0, 2));
-  console.log(`Exp YearMonth ${expYearMonth}`);
+  console.log(`Exp YearMonth: ${expYearMonth}`);
 
   let year = String(today.getFullYear());
   testYear = typeof year;
-  console.log(`year is type ${testYear}`);
+  console.log(`year is type: ${testYear}`);
   let todayYear = year.slice(2);
   let todayMonth = today.getMonth() + 1;
   let todayYearMonth = +(todayYear + todayMonth);
-  console.log(todayYearMonth);
+  console.log(`Today YearMonth: ${todayYearMonth}`);
 
   if (expYearMonth < todayYearMonth) {
     expDateField.classList.add("input-invalid");
@@ -85,7 +86,7 @@ parkForm.addEventListener("submit", function (event) {
   let creditCard = document.querySelector("#credit-card-field");
   let cardTest = document.querySelector("#credit-card");
   let cardNum = document.querySelector("#credit-card").value;
-  console.log(cardNum);
+  console.log(`credit card number: ${cardNum}`);
 
   function validateCardNumber(number) {
     var regex = new RegExp("^[0-9]{16}$");
