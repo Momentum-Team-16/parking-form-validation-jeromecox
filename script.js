@@ -114,5 +114,7 @@ parkForm.addEventListener("submit", function (event) {
     creditCard.classList.add("input-invalid");
     cardTest.setCustomValidity("Please enter a valid credit card number");
     cardTest.reportValidity();
+  } else {
+    creditCard.classList.remove("input-invalid");
   }
 });
